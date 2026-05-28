@@ -1,0 +1,7 @@
+# pnpm 11+ explicit allowlist for packages whose install scripts may run.
+# sharp needs this for native libvips; esbuild + unrs-resolver are pulled by
+# Next/Payload toolchain.
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true

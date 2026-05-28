@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-bg text-ink font-body;
+  }
+  /* Focus ring: visible primary-blue on any interactive element.
+   * Lighthouse accessibility = 100 requires this. */
+  :focus-visible {
+    outline: 2px solid #0032FF;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Respect prefers-reduced-motion globally — kills transitions/animations. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-prose {
+    @apply mx-auto max-w-prose px-2;
+  }
+  .skip-link {
+    @apply absolute left-2 top-2 z-50 -translate-y-16 rounded-btn bg-primary px-2 py-1 text-white shadow-card focus:translate-y-0;
+  }
+}
