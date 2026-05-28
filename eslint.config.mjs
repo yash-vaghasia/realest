@@ -8,6 +8,15 @@ const __dirname = dirname(__filename)
 const compat = new FlatCompat({ baseDirectory: __dirname })
 
 export default [
+  // Global ignores must live in their own config block (flat-config rule).
+  {
+    ignores: [
+      '.next/**',
+      'node_modules/**',
+      'src/app/(payload)/admin/importMap.js',
+      'src/migrations/**', // payload-generated, never hand-edited
+    ],
+  },
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
     rules: {
@@ -16,6 +25,5 @@ export default [
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/no-explicit-any': 'warn',
     },
-    ignores: ['.next/**', 'node_modules/**', 'src/app/(payload)/admin/importMap.js'],
   },
 ]

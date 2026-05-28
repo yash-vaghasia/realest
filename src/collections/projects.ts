@@ -257,7 +257,15 @@ export const Projects: CollectionConfig = {
       label: 'Media',
       admin: { initCollapsed: false },
       fields: [
-        { name: 'hero_image', type: 'upload', relationTo: 'media', required: true },
+        {
+          name: 'hero_image',
+          type: 'upload',
+          relationTo: 'media',
+          admin: {
+            description:
+              'Optional. Pre-launch projects often have no hero photography; Phase 2 renders a typographic hero from name + builder when absent.',
+          },
+        },
         { name: 'gallery', type: 'upload', relationTo: 'media', hasMany: true },
         { name: 'floor_plans', type: 'upload', relationTo: 'media', hasMany: true },
         {
